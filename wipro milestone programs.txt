@@ -1,0 +1,565 @@
+
+//Position Based Sum
+
+package Jagadeesh;
+
+
+
+public class Position {
+
+public static void main(String args[])
+
+{
+
+	int arr[]= {1,51,436,7860,41236};
+
+	int len = arr.length;
+
+	int count = 1;
+
+	int rem=0,sum=0;
+
+	for(int i=0;i<len;i++) {
+
+		rem = (arr[i]/count)%10;
+
+		count*=10;
+
+		sum=sum+(rem*rem);
+
+	}
+
+	System.out.println(sum);
+
+}
+
+}
+
+
+
+
+
+
+
+#FirstandLast
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		String arr[] = {"oreo","shirts","apple"};
+		int count = arr.length;
+		List<Character> list = new ArrayList<>();
+		list.add('a');
+		list.add('e');
+		list.add('i');
+		list.add('o');
+		list.add('u');
+		String result = ""; 
+		for(int i=0;i<count;i++){
+		    char ch1 = arr[i].charAt(0);
+		    char ch2 = arr[i].charAt(arr[i].length()-1);
+		    if(list.contains(ch1)){
+		        if(list.contains(ch2)){
+		            result+=arr[i];
+		        }
+		    }
+		}
+		System.out.println(result);
+	}
+}
+
+
+
+#StringConcatentaion
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		String s1 = "apple";
+		String s2 = "orange";
+		if(s1==""||s2==""){
+		    System.out.println("null");
+		}
+		else{
+		    s1 = s1+s2;
+		    Set<Character> set1 = new HashSet<>();
+            for(int i=0;i<s1.length();i++){
+                set1.add(s1.charAt(i));
+            }
+            StringBuilder result = new StringBuilder();
+            ArrayList<Character> list1 = new ArrayList<>(set1);
+            Collections.sort(list1,Collections.reverseOrder());
+            for(Character ch:list1){
+                result.append(ch);
+            }
+            System.out.println(result.toString());
+		}
+	}
+}
+
+
+
+#FindKey
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int input1 = 3521 , input2 = 2452 , input3 = 1352; 
+		int rem1 = (input1/1000)%10;
+		int rem2 = (input2/100)%10;
+		int rem3=0,max=0;
+		while(input3>0){
+		    rem3 = input3%10;
+		    input3/=10;
+		    if(rem3>max){
+		       max=rem3; 
+		    }
+		}
+		System.out.println(rem1*rem2-max);
+	}
+}
+
+
+
+//no.of primes
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		int rem= 0;
+		int count=0;
+		int arr[] = {2,3,5,7};
+		while(num>0){
+		    rem=num%10;
+		    num=num/10;
+		    for(int i=0;i<arr.length;i++){
+		        if(rem==arr[i]){
+		            count+=1;
+		            break;
+		        }
+		    }
+		}
+		System.out.println(count);
+	}
+}
+
+
+
+//The String decoder
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String num = sc.next();
+		String result = "";
+	    String[] arr = num.split("0");
+	    for(String str:arr) {
+	    int rem = str.length()+64;
+	        char a = (char)rem;
+	        result+=a;
+	    }
+		System.out.println(result);
+	}
+}
+
+
+
+//sum of prime indexes
+
+
+
+public class Main
+{
+    public boolean prime(int n){
+        int count=1;
+        if(n>2){
+            for(int i=2;i<=(n/2+1);i++){
+                if(n%i==0){
+                    count=2;
+                }
+            }
+            if(count==1){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else if(n==2){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+	public static void main(String[] args) {
+	    Main m = new Main();
+	    int sum=0;
+		int arr[] = {-1,-2,-3,3,4,-7};
+		for(int i=0;i<arr.length;i++){
+		    if(m.prime(i)){
+		        sum+=arr[i];
+		    }
+		}
+		System.out.println(sum);
+	}
+}
+
+
+
+//sum of prime numbers in array expect smallest prime number
+
+
+
+public class Main
+{
+    public boolean prime(int n){
+        int count=1;
+        if(n>2){
+            for(int i=2;i<=(n/2+1);i++){
+                if(n%i==0){
+                    count=2;
+                }
+            }
+            if(count==1){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else if(n==2){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+	public static void main(String[] args) {
+	    Main m = new Main();
+	    int sum=0;
+	    int min = Integer.MAX_VALUE;
+		int arr[] = {10,41,18,50,43,31,29,59,96,67};
+		for(int i=0;i<arr.length;i++){
+		    if(m.prime(arr[i])){
+		        sum+=arr[i];
+		       if(arr[i]<min){
+		           min = arr[i];
+		       }
+		    }
+		}
+		System.out.println(sum-min);
+	}
+}
+
+
+
+//sum of all prime numbers expect largest prime number
+
+
+
+public class Main
+{
+    public boolean prime(int n){
+        int count=1;
+        if(n>2){
+            for(int i=2;i<=(n/2+1);i++){
+                if(n%i==0){
+                    count=2;
+                }
+            }
+            if(count==1){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else if(n==2){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+	public static void main(String[] args) {
+	    Main m = new Main();
+	    int sum=0;
+	    int max = 0;
+		int arr[] = {10,41,18,50,43,31,29,59,96,67};
+		for(int i=0;i<arr.length;i++){
+		    if(m.prime(arr[i])){
+		        sum+=arr[i];
+		       if(arr[i]>max){
+		           max = arr[i];
+		       }
+		    }
+		}
+		System.out.println(sum-max);
+	}
+}
+
+
+
+//even digit sum and odd digit sum
+
+
+
+
+
+
+import java.util.Scanner;
+
+
+
+public class FindPin1 {
+
+public static void main(String args[]) {
+
+	Scanner sc = new Scanner(System.in);
+
+	int input1[] = new int[3];
+
+		int even=0,odd=0;
+
+	for(int i=0;i<3;i++) {
+
+		input1[i] = sc.nextInt();
+
+	}
+
+	int input2 = sc.nextInt();
+
+	for(int i=0;i<3;i++) {
+
+		int rem=0;
+
+		while(input1[i]>0) {
+
+			rem = input1[i]%10;
+
+			input1[i]/=10;
+
+			if(rem%2==0) {
+
+				even = even+rem;
+
+			}else {
+
+				odd+=rem;
+
+			}
+
+		}
+
+	}
+
+	if(input2%2==0) {
+
+		System.out.println(even-odd);
+
+	}
+
+	else {
+
+		System.out.println(odd-even);
+
+	}
+
+}
+
+}
+
+
+//smallest digit 
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int [] arr = new int[4];
+		int rem=0,sum=1;
+		for(int i=0;i<4;i++){
+		    arr[i] = sc.nextInt();
+		}
+		int min=0;
+		for(int i=0;i<3;i++){
+		     min = Integer.MAX_VALUE;
+		    while(arr[i]>0){
+		       
+		        rem = arr[i]%10;
+		        arr[i]/=10;
+		        if(rem<min){
+		            min=rem;
+		        }
+		    }
+		    sum*=min;
+		    System.out.println(sum);
+		}
+		System.out.println(sum+arr[3]);
+	}
+}
+
+
+
+//largest number 
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int [] arr = new int[4];
+		int rem=0,sum=1;
+		for(int i=0;i<4;i++){
+		    arr[i] = sc.nextInt();
+		}
+		int max=0;
+		for(int i=0;i<3;i++){
+		     max=0;
+		    while(arr[i]>0){
+		       
+		        rem = arr[i]%10;
+		        arr[i]/=10;
+		        if(rem>max){
+		            max=rem;
+		        }
+		    }
+		    sum*=max;
+		    System.out.println(sum);
+		}
+		System.out.println(sum+arr[3]);
+	}
+}
+
+
+
+//largest and smallest
+
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int [] arr = new int[4];
+		int rem=0,sum=0;
+		for(int i=0;i<4;i++){
+		    arr[i] = sc.nextInt();
+		}
+		int max=0;
+		int min = Integer.MAX_VALUE;
+		for(int i=0;i<3;i++){
+		     max=0;
+		     min=Integer.MAX_VALUE;
+		    while(arr[i]>0){
+		       
+		        rem = arr[i]%10;
+		        arr[i]/=10;
+		        if(rem>max){
+		            max=rem;
+		        }
+		        if(rem<min){
+		            min=rem;
+		        }
+		    }
+		    sum+=(max*min);
+		   
+		}
+		System.out.println(sum-arr[3]);
+	}
+}
+
+
+
+//Generator Series
+
+int number = input1;
+        int diff1 = input2-input1;
+        int diff2 = input3-input2;
+        int count = 0;
+        for(int i=0;i<input4-1;i++){
+            if(count==0){
+                number = number + diff1;
+                count=1;
+            }
+            else{
+                number = number + diff2;
+                count=0;
+            }
+        }
+        return number;
+
+
+
+find result after alternate add or sub
+
+int result=input1;
+        if(input2==1){
+            int count=0;
+            for(int i=input1-1;i>0;i--){
+                if(count==0){
+                    result-= i;
+                    count=1;
+                }
+                else{
+                    result+=i;
+                    count=0;
+                }
+            }
+        }
+        else{
+            int count=0;
+            for(int i=input1-1;i>0;i--){
+                if(count==0){
+                    result+= i;
+                    count=1;
+                }
+                else{
+                    result-=i;
+                    count=0;
+                }
+            }
+        }
+        return result;
+
+
+int res = input1.compareTo(input2);
+        String min = new String();
+        String max = new String();
+        if(res>0){
+         min = input1;
+        max = input2;
+        }
+        else{
+        min  = input2;
+        max = input1;
+        }
+        String number = String.valueOf(input3);
+        char ch1 = Character.valueOf(number.charAt(input4-1));
+        char ch2 = Character.valueOf(number.charAt(number.length()-input4));
+        return String.valueOf(min.charAt(min.length()-1)).toUpperCase()+String.valueOf(max.charAt(0)).toLowerCase()+max.substring(1).toUpperCase()+ch1+ch2;
+    }
+
+
